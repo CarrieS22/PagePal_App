@@ -1,0 +1,47 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33829.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PagePal_App.Android", "PagePal_App\PagePal_App.Android\PagePal_App.Android.csproj", "{233B8A30-3E61-439D-BCDD-82022C22F80E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PagePal_App", "PagePal_App\PagePal_App\PagePal_App.csproj", "{4844C1FF-61B7-41E0-A349-3B1AB2C78EE4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9C2C7B5A-2DB4-49F0-B521-00FE695FE3C2}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		DBConnection.cs = DBConnection.cs
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PagePal_app22.Android", "PagePal_app22\PagePal_app22.Android\PagePal_app22.Android.csproj", "{B553C934-BC21-4395-BA13-3660A3DC776B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{233B8A30-3E61-439D-BCDD-82022C22F80E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{233B8A30-3E61-439D-BCDD-82022C22F80E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{233B8A30-3E61-439D-BCDD-82022C22F80E}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{233B8A30-3E61-439D-BCDD-82022C22F80E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{233B8A30-3E61-439D-BCDD-82022C22F80E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{233B8A30-3E61-439D-BCDD-82022C22F80E}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{4844C1FF-61B7-41E0-A349-3B1AB2C78EE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4844C1FF-61B7-41E0-A349-3B1AB2C78EE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4844C1FF-61B7-41E0-A349-3B1AB2C78EE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4844C1FF-61B7-41E0-A349-3B1AB2C78EE4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B553C934-BC21-4395-BA13-3660A3DC776B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B553C934-BC21-4395-BA13-3660A3DC776B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B553C934-BC21-4395-BA13-3660A3DC776B}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{B553C934-BC21-4395-BA13-3660A3DC776B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B553C934-BC21-4395-BA13-3660A3DC776B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B553C934-BC21-4395-BA13-3660A3DC776B}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {907B8FE4-8E1A-4A47-BC57-23A34B069333}
+	EndGlobalSection
+EndGlobal
