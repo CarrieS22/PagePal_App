@@ -5,13 +5,13 @@
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Book Title" />
-            <Entry x:Name="bookTitleEntry" Placeholder="Enter book title" />
+            <Entry x:Name="bookTitleEntry" Placeholder="Enter book title" x:Required="true" />
 
             <Label Text="Author" />
-            <Entry x:Name="authorEntry" Placeholder="Enter author" />
+            <Entry x:Name="authorEntry" Placeholder="Enter author" x:Required="true" />
 
             <Label Text="Genre" />
-            <Picker x:Name="genrePicker" Title="Select genre">
+            <Picker x:Name="genrePicker" Title="Select genre" x:Required="true">
                 <Picker.Items>
                     <x:String>Fantasy</x:String>
                     <x:String>Fiction</x:String>
