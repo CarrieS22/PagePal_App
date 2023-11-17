@@ -4,9 +4,33 @@
              x:Class="PagePal_App.AddBookPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Add Book Page"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Label Text="Book Title" />
+            <Entry x:Name="bookTitleEntry" Placeholder="Enter book title" />
+
+            <Label Text="Author" />
+            <Entry x:Name="authorEntry" Placeholder="Enter author" />
+
+            <Label Text="Genre" />
+            <Picker x:Name="genrePicker" Title="Select genre">
+                <Picker.Items>
+                    <x:String>Fantasy</x:String>
+                    <x:String>Fiction</x:String>
+                    <x:String>Mystery/Thriller</x:String>
+                    <x:String>Science Fiction</x:String>
+                    <x:String>Romance</x:String>
+                    <x:String>Historical Fiction</x:String>
+                    <x:String>Non-Fiction</x:String>
+                    <x:String>Biography</x:String>
+                    <x:String>Dystopian</x:String>
+                    <x:String>Young Adult</x:String>
+                </Picker.Items>
+            </Picker>
+
+            <Label Text="Publication Date" />
+            <DatePicker x:Name="publicationDatePicker" />
+
+            <Button Text="Save" Clicked="SaveButton_Clicked" />
         </StackLayout>
     </ContentPage.Content>
+
 </ContentPage>

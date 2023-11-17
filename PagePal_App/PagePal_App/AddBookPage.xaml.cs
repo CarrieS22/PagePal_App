@@ -16,5 +16,11 @@ namespace PagePal_App
         {
             InitializeComponent();
         }
+
+        private void SaveButton_Clicked(object sender, EventArgs e)
+        {
+         // This is where we will handle saving the book information
+        }
     }
+
 }

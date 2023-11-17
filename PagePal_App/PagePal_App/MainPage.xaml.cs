@@ -37,5 +37,12 @@ namespace PagePal_App
 
             Navigation.PushAsync(new AddBookPage());
         }
+
+        private void Button_Clicked2(object sender, EventArgs e)
+
+        {
+
+            Navigation.PushAsync(new BookPage());
+        }
     }
 }

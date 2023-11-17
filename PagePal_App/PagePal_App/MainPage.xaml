@@ -14,7 +14,7 @@
 
 
         <StackLayout>
-            <Picker Title="Genre" HorizontalOptions="Start" BindingContext="Left">
+            <Picker Title="Genre" HorizontalOptions="Fill" BindingContext="Left">
             <Picker.Items>
                 <x:String>Fantasy</x:String>
                 <x:String>Fiction</x:String>
@@ -22,7 +22,7 @@
             </Picker.Items>
 
         </Picker>
-            <Picker Title="Author" HorizontalOptions="End" ="" >
+            <Picker Title="Author" HorizontalOptions="Fill">
             <Picker.Items>
                 <x:String>Rick Riordan</x:String>
                 <x:String>John Green</x:String>
@@ -37,6 +37,11 @@
         <Button Text="Next"
          Clicked="Button_Clicked">
         </Button>
+
+        <Button Text="Random Book"
+          Clicked ="Button_Clicked2">
+        </Button>
+        
     </StackLayout>
 
 </ContentPage>
