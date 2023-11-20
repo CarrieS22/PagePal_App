@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <PackageReference Include="MongoDB.Driver.Core" Version="2.22.0" />
+    <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2196" />
     <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
@@ -23,6 +24,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="BookPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="RandomBook.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

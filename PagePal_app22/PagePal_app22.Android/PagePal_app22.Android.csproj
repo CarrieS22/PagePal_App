@@ -87,5 +87,11 @@
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\PagePal_App\PagePal_App\PagePal_App.csproj">
+      <Project>{4844C1FF-61B7-41E0-A349-3B1AB2C78EE4}</Project>
+      <Name>PagePal_App</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

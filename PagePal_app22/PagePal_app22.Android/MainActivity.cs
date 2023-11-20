@@ -4,6 +4,7 @@ using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
+using PagePal_App;
 
 namespace PagePal_app22.Droid
 {

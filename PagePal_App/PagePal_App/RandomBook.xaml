@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PagePal_App.RandomBook">
+
+    <StackLayout Margin="20,35,20,20">
+        <Entry x:Name="BookTitle" 
+               Placeholder="Enter Book Title" />
+        <Entry x:Name="AuthorLastName"
+               Placeholder="Author Last Name" />
+        <Entry x:Name="AuthorFirstName"
+               Placeholder="Author First Name" />
+        <Entry x:Name="Genre"
+               Placeholder="Enter Genre" />
+        <Entry x:Name="Publication"
+               Placeholder="Enter Publication" />
+        <DatePicker x:Name="yearEntry"
+               Format="D" />
+        <Button Text="Add to Database"
+                Clicked="OnButtonClicked" />
+        <Button Text="Delete Database"
+                Clicked="OnButtonDelete" />
+        <CollectionView x:Name="collectionView">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout>
+                        <Label Text="{Binding BookTitle}"
+                               FontSize="Medium" />
+                        <Label Text="{Binding AuthorLastName}"
+                                TextColor="Silver"
+                                FontSize="Small" />
+                        <Label Text="{Binding AuthorFirstName}"
+                               TextColor ="Silver"
+                               FontSize="Small" />
+                        <Label Text="{Binding Genre}"
+                               TextColor ="Silver"
+                               FontSize="Small" />
+                        <Label Text="{Binding Publication}"
+                               TextColor ="Silver"
+                               FontSize="Small" />
+                        <Label Text="{Binding yearEntry}"
+                               TextColor ="Silver"
+                               FontSize="Small" />
+
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+    
+</ContentPage>

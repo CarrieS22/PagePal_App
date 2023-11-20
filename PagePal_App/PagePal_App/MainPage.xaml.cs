@@ -42,7 +42,8 @@ namespace PagePal_App
 
         {
 
-            Navigation.PushAsync(new BookPage());
+            Navigation.PushAsync(new RandomBook());
         }
+
     }
 }
