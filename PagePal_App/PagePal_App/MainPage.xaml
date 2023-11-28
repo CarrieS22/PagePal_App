@@ -15,7 +15,7 @@
 
 
         <StackLayout>
-            <Picker Title="Genre" HorizontalOptions="Fill" BindingContext="Left">
+            <Picker x:Name="genrePicker" Title="Genre" HorizontalOptions="Fill">
                 <Picker.Items>
                     <x:String>Fantasy</x:String>
                     <x:String>Fiction</x:String>
@@ -30,12 +30,8 @@
                 </Picker.Items>
 
             </Picker>
-            <Picker Title="Author" HorizontalOptions="Fill">
-            <Picker.Items>
-                <x:String>Rick Riordan</x:String>
-                <x:String>John Green</x:String>
-            </Picker.Items>
-        </Picker>
+            <Picker x:Name="authorPicker" Title="Author" HorizontalOptions="Fill">
+            </Picker>
 
         </StackLayout>
         <Button Text="Next"

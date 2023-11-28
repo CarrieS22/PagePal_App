@@ -17,23 +17,40 @@ namespace PagePal_App
             InitializeComponent();
         }
 
-        private void SaveButton_Clicked(object sender, EventArgs e)
+        private async void SaveButton_Clicked(object sender, EventArgs e)
         {
-            //Input verification
-            if (IsRequired(bookTitleEntry) && IsRequired(authorEntry) && IsRequired(genrePicker) && IsRequired(publicationDatePicker))
+            // Input verification
+            if (IsRequired(BookTitle) && IsRequired(AuthorLastName) && IsRequired(genrePicker) && IsRequired(AuthorFirstName))
             {
-                // Here is where we will save the data to our database once Eddie gets that sorted. Or Carrie will just have to host and run and connect lol
-          
+                // Create a new Books object with the data from the input fields
+                var newBook = new Books
+                {
+                    BookTitle = BookTitle.Text,
+                    AuthorLastName = AuthorLastName.Text,
+                    AuthorFirstName = AuthorFirstName.Text,
+                    Genre = genrePicker.SelectedItem?.ToString(),
+                    
+                };
+
+                // Save the new book to the database using the SaveBookAsync method
+                await App.Database.SaveBookAsync(newBook);
+
+                // Display a success message or perform any other actions as needed
+
+                // Clear the input fields
+                BookTitle.Text = AuthorLastName.Text = AuthorFirstName.Text = string.Empty;
+                genrePicker.SelectedItem = null;
             }
             else
             {
-                DisplayAlert("Error", "Please fill in all required fields.", "OK");
+                await DisplayAlert("Error", "Please fill in all required fields.", "OK");
             }
         }
 
+
         private bool IsRequired(View view)
         {
-            // This is just to check if the x:Required fields have input or not.
+            // This is just to check if the required fields have input or not.
             if (view is Entry entry && entry.Placeholder != null && entry.Placeholder.Contains("Enter") && string.IsNullOrEmpty(entry.Text))
                 return false;
             else if (view is Picker picker && picker.Title != null && picker.Title.Contains("Select") && picker.SelectedItem == null)
