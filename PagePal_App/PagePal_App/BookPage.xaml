@@ -4,9 +4,15 @@
              x:Class="PagePal_App.BookPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to your Book Page!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Label x:Name="titleLabel" Text="Book Title" FontSize="Medium" />
+
+            <Label x:Name="authorLabel" Text="Author" FontSize="Small" />
+
+            <Label x:Name="genreLabel" Text="Genre" FontSize="Small" />
+
+            <Label x:Name="publicationLabel" Text="Publication" FontSize="Small" />
+
+            <Label x:Name="yearLabel" Text="Year" FontSize="Small" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

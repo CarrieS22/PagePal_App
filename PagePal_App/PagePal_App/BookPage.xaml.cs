@@ -12,9 +12,15 @@ namespace PagePal_App
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class BookPage : ContentPage
     {
-        public BookPage()
+        public BookPage(Books selectedBook)
         {
             InitializeComponent();
+
+            // Populate the BookPage with the selected book's details
+            titleLabel.Text = selectedBook.BookTitle;
+            authorLabel.Text = $"{selectedBook.AuthorFirstName} {selectedBook.AuthorLastName}";
+            genreLabel.Text = selectedBook.Genre;
         }
+
     }
 }
