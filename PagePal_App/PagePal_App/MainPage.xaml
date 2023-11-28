@@ -40,6 +40,10 @@
         <Button Text="Random Book"
                 Clicked="Button_Clicked2">
         </Button>
+        <Button Text="All Books"
+                Clicked="Button_Clicked_AllBooks">
+        </Button>
+        
     </StackLayout>
 
 </ContentPage>

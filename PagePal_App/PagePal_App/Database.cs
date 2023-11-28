@@ -50,8 +50,6 @@ namespace PagePal_App
             return await query.ToListAsync();
         }
 
-
-
         public Task<int> SaveBookAsync(Books book)
         {
             return _database.InsertAsync(book);
