@@ -35,7 +35,8 @@ namespace PagePal_App
                 // Save the new book to the database using the SaveBookAsync method
                 await App.Database.SaveBookAsync(newBook);
 
-                // Display a success message or perform any other actions as needed
+                // Display a success message
+                await DisplayAlert("Success", "Book saved successfully!", "OK");
 
                 // Clear the input fields
                 BookTitle.Text = AuthorLastName.Text = AuthorFirstName.Text = string.Empty;

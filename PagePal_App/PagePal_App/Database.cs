@@ -28,24 +28,29 @@ namespace PagePal_App
         }
 
         //Get books based on filters
-        public Task<List<Books>> GetFilteredBooks(string genre, string author)
+        public async Task<List<Books>> GetBooksBasedOnFiltersAsync(string genre, string[] authorNames)
         {
-            // Construct the query based on the provided filters
+            // Create a base query to retrieve books
             var query = _database.Table<Books>();
 
+            // Filter by genre if specified
             if (!string.IsNullOrEmpty(genre))
             {
                 query = query.Where(b => b.Genre == genre);
             }
 
-            if (!string.IsNullOrEmpty(author))
+            // Filter by author if specified
+            if (authorNames != null && authorNames.Length > 0)
             {
-                query = query.Where(b => $"{b.AuthorFirstName} {b.AuthorLastName}" == author);
+                // Assuming authorNames[0] is the first name and authorNames[1] is the last name
+                query = query.Where(b => b.AuthorFirstName == authorNames[0] && b.AuthorLastName == authorNames[1]);
             }
 
-            // Execute the query and return the result
-            return query.ToListAsync();
+            // Execute the query and return the results
+            return await query.ToListAsync();
         }
+
+
 
         public Task<int> SaveBookAsync(Books book)
         {

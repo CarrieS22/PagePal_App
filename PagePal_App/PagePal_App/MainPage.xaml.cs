@@ -1,28 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data.SqlTypes;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using System.Data.SqlClient;
-using System.Data.Common;
-using System.Security.Cryptography.X509Certificates;
-using System.Windows;
-
 
 namespace PagePal_App
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : ContentPage
     {
-        DbConnection database;
+        private Entry searchEntry;
+
         public MainPage()
         {
             InitializeComponent();
-
             LoadAuthors();
         }
 
@@ -53,8 +44,11 @@ namespace PagePal_App
             string selectedGenre = genrePicker.SelectedItem as string;
             string selectedAuthor = authorPicker.SelectedItem as string;
 
+            // Split the selected author into first and last name
+            string[] authorNames = selectedAuthor?.Split(' ');
+
             // Retrieve books based on filters
-            var filteredBooks = await App.Database.GetFilteredBooks(selectedGenre, selectedAuthor);
+            var filteredBooks = await App.Database.GetBooksBasedOnFiltersAsync(selectedGenre, authorNames);
 
             // Check if there are books that match the filters
             if (filteredBooks.Any())
@@ -64,27 +58,24 @@ namespace PagePal_App
                 var randomBook = filteredBooks[random.Next(filteredBooks.Count)];
 
                 // Display information about the randomly selected book (you can modify this as needed)
-                await DisplayAlert("Random Book", $"Title: {randomBook.BookTitle}\nAuthor: {randomBook.AuthorLastName} {randomBook.AuthorFirstName}\nGenre: {randomBook.Genre}\nPublication: {randomBook.Publication}\nYear: {randomBook.yearEntry.ToShortDateString()}", "OK");
+                DisplayAlert("Random Book", $"Title: {randomBook.BookTitle}\nAuthor: {randomBook.AuthorLastName} {randomBook.AuthorFirstName}\nGenre: {randomBook.Genre}\nPublication: {randomBook.Publication}\nYear: {randomBook.yearEntry.ToShortDateString()}", "OK");
             }
             else
             {
-                await DisplayAlert("Error", "No books found with the specified filters.", "OK");
+                DisplayAlert("Error", "No books found with the specified filters.", "OK");
             }
         }
 
+
+
         private void Button_Clicked1(object sender, EventArgs e)
-
         {
-
             Navigation.PushAsync(new AddBookPage());
         }
 
         private void Button_Clicked2(object sender, EventArgs e)
-
         {
-
             Navigation.PushAsync(new RandomBook());
         }
-
     }
 }

@@ -8,11 +8,10 @@
         <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
             <Label Text="Welcome to PagePal" HorizontalTextAlignment="Start" TextColor="White" FontSize="36"/>
         </Frame>
-        <Label Text="Enter your filters below and then click 'Next' to randomly select a book using those filters to read. Click 'Add Book' to add more books to your list. Click ‘Random’ to choose a book with no filters." 
+        <Label Text="Enter your filters below and then click 'Filtered Book' to randomly select a book using those filters to read. Click 'Add Book' to add more books to your list. Click ‘Random’ to choose a book with no filters." 
                HorizontalTextAlignment="Start" FontSize="Title" Padding="30,10,30,10"/>
         <Label FontSize="16" Padding="30,24,30,0">
         </Label>
-
 
         <StackLayout>
             <Picker x:Name="genrePicker" Title="Genre" HorizontalOptions="Fill">
@@ -28,24 +27,19 @@
                     <x:String>Dystopian</x:String>
                     <x:String>Young Adult</x:String>
                 </Picker.Items>
-
             </Picker>
             <Picker x:Name="authorPicker" Title="Author" HorizontalOptions="Fill">
             </Picker>
-
         </StackLayout>
-        <Button Text="Next"
-         Clicked="Button_Clicked">
+        <Button Text="Filtered Book"
+                Clicked="Button_Clicked">
         </Button>
-
         <Button Text="Add Book"
-          Clicked="Button_Clicked1">
+                Clicked="Button_Clicked1">
         </Button>
-
         <Button Text="Random Book"
-          Clicked ="Button_Clicked2">
+                Clicked="Button_Clicked2">
         </Button>
-        
     </StackLayout>
 
 </ContentPage>
