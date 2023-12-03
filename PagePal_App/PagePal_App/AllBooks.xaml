@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PagePal_App.AllBooks">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add"
+                     Clicked="ToolbarItem_Clicked"/>
+    </ContentPage.ToolbarItems>
+    <StackLayout>
+        <CollectionView x:Name="myCollectionView"
+                            SelectionMode="Single"
+                            Margin="20,5,20,0">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItem Text ="Edit"
+                                        BackgroundColor ="LightBlue"
+                                        CommandParameter="{Binding .}"
+                                        Invoked ="SwipeItem_Invoked"/>
+                                <SwipeItem Text ="Delete"
+                                        BackgroundColor ="IndianRed"
+                                        CommandParameter="{Binding .}"
+                                        Invoked ="SwipeItem_Invoked_1"/>
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+                        <Grid RowSpacing="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="20"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Text="{Binding BookTitle}"
+                               Grid.Row="0" Grid.Column="1"
+                               VerticalOptions="CenterAndExpand"
+                               FontSize="20"
+                               FontAttributes="Bold"/>
+                                    <Label Text="{Binding FirstLastName}"
+                               Grid.Row="1" Grid.Column="1"/>
+                                    <Label Text="{Binding GenrePublication}"
+                               Grid.Row="2" Grid.Column="1"/>
+                                </Grid>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</ContentPage>

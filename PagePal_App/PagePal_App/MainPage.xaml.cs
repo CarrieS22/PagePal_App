@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using PagePal_App;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -10,7 +11,7 @@ namespace PagePal_App
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : ContentPage
     {
-        private Entry searchEntry;
+        //private Entry searchEntry;
 
         public MainPage()
         {
@@ -77,34 +78,9 @@ namespace PagePal_App
             Navigation.PushAsync(new RandomBook());
         }
 
-        private async void Button_Clicked_AllBooks(object sender, EventArgs e)
+        private void Button_Clicked_AllBooks(object sender, EventArgs e)
         {
-            // Retrieve all books from the database
-            var allBooks = await App.Database.GetBooksAsync();
-
-            // Check if there are any books
-            if (allBooks.Any())
-            {
-                // Create a string to display book information
-                StringBuilder bookInfo = new StringBuilder();
-
-                foreach (var book in allBooks)
-                {
-                    // Append book information to the string
-                    bookInfo.AppendLine($"Title: {book.BookTitle}");
-                    bookInfo.AppendLine($"Author: {book.AuthorFirstName} {book.AuthorLastName}");
-                    bookInfo.AppendLine($"Genre: {book.Genre}");
-                    bookInfo.AppendLine(); // Add a line break for better readability
-                }
-
-                // Display the book information
-                await DisplayAlert("All Books", bookInfo.ToString(), "OK");
-            }
-            else
-            {
-                // Display a message if no books are found
-                await DisplayAlert("No Books", "No books found in the database.", "OK");
-            }
+            Navigation.PushAsync(new AllBooks());
         }
 
     }

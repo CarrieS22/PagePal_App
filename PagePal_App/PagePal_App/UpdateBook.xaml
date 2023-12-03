@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PagePal_App.UpdateBook">
+    <ContentPage.Content>
+        <StackLayout>
+            <Entry x:Name="BookTitle" 
+               Placeholder="Enter Book Title" />
+            <Entry x:Name="AuthorLastName"
+               Placeholder="Author Last Name" />
+            <Entry x:Name="AuthorFirstName"
+               Placeholder="Author First Name" />
+            <Picker x:Name="genrePicker" Title="Select genre" >
+                <Picker.Items>
+                    <x:String>Fantasy</x:String>
+                    <x:String>Fiction</x:String>
+                    <x:String>Mystery/Thriller</x:String>
+                    <x:String>Science Fiction</x:String>
+                    <x:String>Romance</x:String>
+                    <x:String>Historical Fiction</x:String>
+                    <x:String>Non-Fiction</x:String>
+                    <x:String>Biography</x:String>
+                    <x:String>Dystopian</x:String>
+                    <x:String>Young Adult</x:String>
+                </Picker.Items>
+            </Picker>
+
+            <Button Text="Update Database"
+                Clicked="UpdateButton_Clicked" />
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>

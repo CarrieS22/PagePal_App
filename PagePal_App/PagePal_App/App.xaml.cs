@@ -1,8 +1,10 @@
-﻿using System;
+﻿using PagePal_App;
+using System;
 using System.IO;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
+[assembly: Dependency(typeof(App))]
 namespace PagePal_App
 {
     public partial class App : Application
@@ -21,11 +23,13 @@ namespace PagePal_App
                 return database;
             }
         }
+
         public App()
         {
             InitializeComponent();
 
             MainPage = new NavigationPage (new MainPage());
+
         }
 
         protected override void OnStart()

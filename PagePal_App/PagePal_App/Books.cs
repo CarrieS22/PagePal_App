@@ -6,16 +6,23 @@ using SQLite;
 
 namespace PagePal_App
 {
-    public class Books
+    public class BookTables
     {
-        [PrimaryKey, AutoIncrement]
-        public int Id { get; set; }
-        public string BookTitle { get; set; }
-        public string AuthorLastName { get; set; }
-        public string AuthorFirstName { get; set; }
-        public DateTime yearEntry { get; set; }
-        public string Genre { get; set; }
-        public string Publication { get; set; }
+
+        [Table("books")]
+        public class Books
+        {
+            [PrimaryKey, AutoIncrement]
+            public int Id { get; set; }
+            public string BookTitle { get; set; }
+            public string AuthorLastName { get; set; }
+            public string AuthorFirstName { get; set; }
+            public string FirstLastName { get { return AuthorFirstName + " " + AuthorLastName; } }
+            public DateTime yearEntry { get; set; }
+            public string Genre { get; set; }
+            public string Publication { get; set; }
+            public string GenrePublication { get { return Publication + " " + Genre; } }
+        }
 
         [Table("authors")]
         public class Authors
@@ -26,11 +33,12 @@ namespace PagePal_App
             public string AFirstName { get; set; }
         }
 
-        [Table("booktable")]
-        public class BookTable
+        [Table("bookdetails")]
+        public class BookDetails
         {
             [PrimaryKey, AutoIncrement]
             public int BookID { get; set; }
+            public string BTitle { get; set; }
             public string Genre { set; get; }
             public string BPublication { get; set; }
         }
