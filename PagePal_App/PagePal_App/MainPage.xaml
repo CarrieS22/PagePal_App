@@ -29,11 +29,6 @@
                 </Picker.Items>
             </Picker>
             <Picker x:Name="authorPicker" Title="Author" HorizontalOptions="Fill">
-                    <x:String>Stephen King</x:String>
-                    <x:String>Rick Riordan</x:String>
-                    <x:String>Stephen King</x:String>
-                    <x:String>John Green</x:String>
-                    <x:String>Mark Twain</x:String>
             </Picker>
         </StackLayout>
         <Button Text="Filtered Book"
