@@ -5,6 +5,9 @@
              Title="PagePal">
 
     <StackLayout>
+        <Button Text="Log In"
+                Clicked="Button_Clicked_Login">
+        </Button>
         <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
             <Label Text="Welcome to PagePal" HorizontalTextAlignment="Start" TextColor="White" FontSize="36"/>
         </Frame>
