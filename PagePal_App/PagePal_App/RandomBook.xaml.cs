@@ -8,12 +8,12 @@ namespace PagePal_App
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class RandomBook : ContentPage
     {
-        public ObservableCollection<Books> BookCollection { get; set; }
+        public ObservableCollection<BookTables.Books> BookCollection { get; set; }
 
         public RandomBook()
         {
             InitializeComponent();
-            BookCollection = new ObservableCollection<Books>();
+            BookCollection = new ObservableCollection<BookTables.Books>();
             collectionView.ItemsSource = BookCollection;
         }
 
@@ -50,7 +50,7 @@ namespace PagePal_App
 
     private async void OnButtonDelete(object sender, EventArgs e)
         {
-            await App.Database.DeleteAllItems<Books>();
+            await App.Database.DeleteAllItems<BookTables.Books>();
             BookCollection.Clear();
         }
     }

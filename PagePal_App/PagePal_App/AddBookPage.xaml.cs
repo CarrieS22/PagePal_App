@@ -17,35 +17,74 @@ namespace PagePal_App
             InitializeComponent();
         }
 
+        BookTables.Books _bewks;
+        public AddBookPage(BookTables.Books emp)
+        {
+            InitializeComponent();
+            Title = "Edit Information";
+            _bewks = emp;
+            BookTitle.Text = emp.BookTitle;
+            AuthorLastName.Text = emp.AuthorLastName;
+            AuthorFirstName.Text = emp.AuthorFirstName;
+            genrePicker.SelectedItem = emp.Genre;
+            BookTitle.Focus();
+        }
+
         private async void SaveButton_Clicked(object sender, EventArgs e)
         {
-            // Input verification
-            if (IsRequired(BookTitle) && IsRequired(AuthorLastName) && IsRequired(genrePicker) && IsRequired(AuthorFirstName))
+            if (string.IsNullOrEmpty(BookTitle.Text) || string.IsNullOrEmpty(AuthorLastName.Text) || string.IsNullOrEmpty(AuthorFirstName.Text) || IsRequired(genrePicker))
             {
-                // Create a new Books object with the data from the input fields
-                var newBook = new Books
+                await DisplayAlert("Error", "Please fill in all required fields.", "OK");
+            }
+            else if(_bewks != null)
+            {
+                UpdateBook();
+            }
+            else
+            {
+                var newBook = new BookTables.Books
                 {
                     BookTitle = BookTitle.Text,
                     AuthorLastName = AuthorLastName.Text,
                     AuthorFirstName = AuthorFirstName.Text,
                     Genre = genrePicker.SelectedItem?.ToString(),
-                    
                 };
-
                 // Save the new book to the database using the SaveBookAsync method
                 await App.Database.SaveBookAsync(newBook);
 
                 // Display a success message
                 await DisplayAlert("Success", "Book saved successfully!", "OK");
+            }
+
+            // Input verification
+            //if (IsRequired(BookTitle) && IsRequired(AuthorLastName) && IsRequired(genrePicker) && IsRequired(AuthorFirstName))
+            //{
+                // Create a new Books object with the data from the input fields
+                //var newBook = new BookTables.Books
+                //{
+                    //BookTitle = BookTitle.Text,
+                    //AuthorLastName = AuthorLastName.Text,
+                    //AuthorFirstName = AuthorFirstName.Text,
+                    //Genre = genrePicker.SelectedItem?.ToString(),   
+                //};
+
+                // Save the new book to the database using the SaveBookAsync method
+                //await App.Database.SaveBookAsync(newBook);
+
+                // Display a success message
+                //await DisplayAlert("Success", "Book saved successfully!", "OK");
 
                 // Clear the input fields
-                BookTitle.Text = AuthorLastName.Text = AuthorFirstName.Text = string.Empty;
-                genrePicker.SelectedItem = null;
-            }
-            else
-            {
-                await DisplayAlert("Error", "Please fill in all required fields.", "OK");
-            }
+                //BookTitle.Text = AuthorLastName.Text = AuthorFirstName.Text = string.Empty;
+                //genrePicker.SelectedItem = null;
+            //}
+            //else if (_bewks != null)
+            //{
+                //UpdateBook();
+            //}
+            //{
+                //await DisplayAlert("Error", "Please fill in all required fields.", "OK");
+            //}
         }
 
 
@@ -55,11 +94,21 @@ namespace PagePal_App
             if (view is Entry entry && entry.Placeholder != null && entry.Placeholder.Contains("Enter") && string.IsNullOrEmpty(entry.Text))
                 return false;
             else if (view is Picker picker && picker.Title != null && picker.Title.Contains("Select") && picker.SelectedItem == null)
-                return false;
+                return true;
             else if (view is DatePicker datePicker && datePicker.Date == DateTime.MinValue)
                 return false;
 
-            return true;
+            return false;
+        }
+
+        async void UpdateBook()
+        {
+            _bewks.BookTitle = BookTitle.Text;
+            _bewks.AuthorLastName = AuthorLastName.Text;
+            _bewks.AuthorFirstName = AuthorFirstName.Text;
+            _bewks.Genre = genrePicker.SelectedItem?.ToString();
+            await App.Database.UpdateBook(_bewks);
+            await Navigation.PopAsync();
         }
     }
 }
