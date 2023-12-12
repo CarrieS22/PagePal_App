@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PagePal_App.ProfilePage"
+             Title="User Profile" >
+    <ContentPage.Content>
+        <StackLayout>
+            <Label x:Name="UserProfile" HorizontalTextAlignment="Center" TextColor="Black" FontSize="30"/>
+            <CollectionView x:Name="myCollectionView"
+                            SelectionMode="Single"
+                            Margin="20,5,20,0">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <SwipeView>
+                            <SwipeView.RightItems>
+                                <SwipeItems>
+                                    <SwipeItem Text ="Edit"
+                                        BackgroundColor ="LightBlue"
+                                        CommandParameter="{Binding .}"
+                                        Invoked ="SwipeItem_Invoked"/>
+                                    <SwipeItem Text ="Delete"
+                                        BackgroundColor ="IndianRed"
+                                        CommandParameter="{Binding .}"
+                                        Invoked ="SwipeItem_Invoked_1"/>
+                                </SwipeItems>
+                            </SwipeView.RightItems>
+                            <Grid RowSpacing="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="20"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{Binding UUsername}"
+                               Grid.Row="0" Grid.Column="1"
+                               VerticalOptions="CenterAndExpand"
+                               FontSize="20"
+                               FontAttributes="Bold"/>
+                                <Label Text="{Binding email}"
+                               Grid.Row="1" Grid.Column="1"/>
+                                <Label Text="{Binding UFirstName}"
+                               Grid.Row="2" Grid.Column="1"/>
+
+
+                            </Grid>
+                        </SwipeView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Label x:Name="SignUp" HorizontalOptions="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Handle_T"/>
+                </Label.GestureRecognizers>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Edit" TextColor="Black" FontAttributes="Bold" TextDecorations="Underline"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -17,6 +17,9 @@ namespace PagePal_App
         {
             InitializeComponent();
             LoadAuthors();
+            //string name = App.UserName;
+            LoggedIn.Text = "Welcome to PagePal";
+            UserIN.Text = "User: " + App.UserName;
         }
 
         private void LoadAuthors()
@@ -78,9 +81,24 @@ namespace PagePal_App
             Navigation.PushAsync(new RandomBook());
         }
 
-        private async void Button_Clicked_AllBooks(object sender, EventArgs e)
+        private void Button_Clicked_AllBooks(object sender, EventArgs e)
         {
             Navigation.PushAsync(new AllBooks());
+        }
+
+        private void Button_Clicked_Login(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new LoginPage());
+        }
+        async void Profile_Clicked(Object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ProfilePage());
+        }
+        async void Signout_Clicked(Object sender, EventArgs e)
+        {
+            App.IsUserLoggedIn = false;
+            Navigation.InsertPageBefore(new LoginPage(), this);
+            await Navigation.PopAsync();
         }
 
     }

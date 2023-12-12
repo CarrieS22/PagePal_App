@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PagePal_App.SignUp"
+             Title ="New Registration">
+    <ContentPage.Content>
+        <StackLayout>
+            <Entry x:Name="username" 
+               Placeholder="Enter Username" />
+            <Entry x:Name="password"
+               Placeholder="Enter Password" />
+            <Entry x:Name="email"
+               Placeholder="Enter Your E-Mail" />
+            <Entry x:Name="firstname"
+               Placeholder="Author First Name" />
+            <Entry x:Name="lastname"
+               Placeholder="Author Last Name" />
+            <Button Text="Register"
+                Clicked="Signup_Clicked" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

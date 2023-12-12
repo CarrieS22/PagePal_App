@@ -55,10 +55,11 @@ namespace PagePal_App
         {
             [PrimaryKey, AutoIncrement]
             public int UserID { get; set; }
-            public string username { get; set; }
+            public string UUsername { get; set; }
             public string email { get; set; }
             public string UFirstName { get; set; }
             public string ULastName { get; set; }
+            public string UPassword { get; set; }
         }
     }
 }

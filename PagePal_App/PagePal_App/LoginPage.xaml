@@ -1,10 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PagePal_App.LoginPage">
+             x:Class="PagePal_App.LoginPage"
+             Title="Pagepal Login Page">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Log In"></Label>
+            <Label Text="Hello, Please Log In" HorizontalOptions="Center" TextColor="Black" FontSize="20"></Label>
             <Entry x:Name="txtUsername" Placeholder="Username"
                    TextColor="Black"
                    PlaceholderColor="Gray"></Entry>
@@ -25,12 +26,22 @@
                 </Button>
             <Label HorizontalOptions="Center">
                 <Label.FormattedText>
-                <FormattedString>
-                    <Span Text="Don't have an account?" TextColor="Gray"/>
-                    <Span Text="Sign Up" TextColor="Gray" FontAttributes="Bold" TextDecorations="Underline"/>
-                </FormattedString>
+                    <FormattedString>
+                        <Span Text="Don't have an account?" TextColor="Gray"/>
+                    </FormattedString>
                 </Label.FormattedText>
             </Label>
+            <Label x:Name="SignUp" HorizontalOptions="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Handle_Tapped"/>
+                </Label.GestureRecognizers>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Sign Up" TextColor="Gray" FontAttributes="Bold" TextDecorations="Underline"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label x:Name="messageLabel" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

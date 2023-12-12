@@ -13,21 +13,55 @@ namespace PagePal_App
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPage : ContentPage
     {
+
         public LoginPage()
         {
             InitializeComponent();
         }
 
-        public void Button_Clicked(object sender, EventArgs e)
+
+        //public void Button_Clicked(object sender, EventArgs e)
+        //{
+            //if(txtUsername.Text == "Username123" && txtPassword.Text == "123456")
+            //{
+                //Navigation.PushAsync(new MainPage());
+            //}
+            //else
+            //{
+                //DisplayAlert("Oops..", "Username/Password incorrect.", "OK");
+            //}
+        //}
+
+        async void Button_Clicked(object sender, EventArgs e)
         {
-            if(txtUsername.Text == "Username123" && txtPassword.Text == "123456")
+            var user = new BookTables.Users
             {
-                Navigation.PushAsync(new MainPage());
-            }
-            else
+                UUsername = txtUsername.Text,
+                UPassword = txtPassword.Text
+            };
+            var isValid = AreCredentialsCorrect(user);
+            if (string.IsNullOrEmpty(txtPassword.Text) && string.IsNullOrEmpty(txtUsername.Text))
             {
-                DisplayAlert("Oops..", "Username/Password incorrect.", "OK");
+                messageLabel.Text = "Login failed";
+                txtPassword.Text = string.Empty;
             }
+            else if(isValid)
+            {
+                App.UserName = txtUsername.Text.ToString();
+                App.IsUserLoggedIn = true;
+                Navigation.InsertPageBefore(new MainPage(), this);
+                await Navigation.PopAsync();
+            }
+        }
+
+        public bool AreCredentialsCorrect(BookTables.Users user)
+        {
+            return txtPassword.Text == user.UUsername && txtPassword.Text == user.UPassword;
+        }
+
+        void Handle_Tapped(object sender, System.EventArgs e)
+        {
+            Navigation.PushAsync(new SignUp());
         }
     }
 }
