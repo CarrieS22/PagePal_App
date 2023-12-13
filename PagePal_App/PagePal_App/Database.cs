@@ -14,6 +14,7 @@ namespace PagePal_App
         {
             _database = new SQLiteAsyncConnection(dbPath);
             _database.CreateTableAsync<BookTables.Books>();
+            _database.CreateTableAsync<BookTables.Users>();
 
         }
 
@@ -27,6 +28,12 @@ namespace PagePal_App
         public Task<List<BookTables.Books>> GetDistinctAuthorsAsync()
         {
             return _database.Table<BookTables.Books>().ToListAsync(); 
+        }
+
+        //Get Authors
+        public Task<List<BookTables.Users>> GetUsers()
+        {
+            return _database.Table<BookTables.Users>().ToListAsync();
         }
 
         //Get books based on filters
@@ -52,24 +59,50 @@ namespace PagePal_App
             return await query.ToListAsync();
         }
 
+        //SaveBook
         public Task<int> SaveBookAsync(BookTables.Books book)
         {
             return _database.InsertAsync(book);
         }
 
+        //DeleteEntireDatabase
         public Task<int> DeleteAllItems<T>()
         {
             return _database.DeleteAllAsync<T>();
         }
 
+        //UpdateBook
         public Task<int> UpdateBook(BookTables.Books book)
         {
             return _database.UpdateAsync(book);
         }
 
+        //Delete Book
         public Task<int> DeleteBook (BookTables.Books book)
         {
             return _database.DeleteAsync(book);
+        }
+
+        //Save User
+        public Task<int> SaveUserAsync(BookTables.Users users)
+        {
+            return _database.InsertAsync(users);
+        }
+
+        //Update User
+        public Task<int> UpdateUser(BookTables.Users users)
+        {
+            return _database.UpdateAsync(users);
+        }
+
+        //Delete User
+        public Task<int> DeleteUser(BookTables.Users users)
+        {
+            return _database.DeleteAsync(users);
+        }
+        public Task<List<BookTables.Users>> GetLoggedIn()
+        {
+            return _database.Table<BookTables.Users>().ToListAsync();
         }
     }
 }

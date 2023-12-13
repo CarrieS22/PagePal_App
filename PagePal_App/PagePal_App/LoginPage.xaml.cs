@@ -13,21 +13,35 @@ namespace PagePal_App
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPage : ContentPage
     {
+
         public LoginPage()
         {
             InitializeComponent();
         }
 
-        public void Button_Clicked(object sender, EventArgs e)
+
+        //public void Button_Clicked(object sender, EventArgs e)
+        //{
+            //if(txtUsername.Text == "Username123" && txtPassword.Text == "123456")
+            //{
+                //Navigation.PushAsync(new MainPage());
+            //}
+            //else
+            //{
+                //DisplayAlert("Oops..", "Username/Password incorrect.", "OK");
+            //}
+        //}
+
+        async void Button_Clicked(object sender, EventArgs e)
         {
-            if(txtUsername.Text == "Username123" && txtPassword.Text == "123456")
             {
-                Navigation.PushAsync(new MainPage());
-            }
-            else
-            {
-                DisplayAlert("Oops..", "Username/Password incorrect.", "OK");
-            }
+        }
+        {
+        }
+
+        void Handle_Tapped(object sender, System.EventArgs e)
+        {
+            Navigation.PushAsync(new SignUp());
         }
     }
 }

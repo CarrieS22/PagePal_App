@@ -55,38 +55,7 @@ namespace PagePal_App
                 // Display a success message
                 await DisplayAlert("Success", "Book saved successfully!", "OK");
             }
-
-            // Input verification
-            //if (IsRequired(BookTitle) && IsRequired(AuthorLastName) && IsRequired(genrePicker) && IsRequired(AuthorFirstName))
-            //{
-                // Create a new Books object with the data from the input fields
-                //var newBook = new BookTables.Books
-                //{
-                    //BookTitle = BookTitle.Text,
-                    //AuthorLastName = AuthorLastName.Text,
-                    //AuthorFirstName = AuthorFirstName.Text,
-                    //Genre = genrePicker.SelectedItem?.ToString(),   
-                //};
-
-                // Save the new book to the database using the SaveBookAsync method
-                //await App.Database.SaveBookAsync(newBook);
-
-                // Display a success message
-                //await DisplayAlert("Success", "Book saved successfully!", "OK");
-
-                // Clear the input fields
-                //BookTitle.Text = AuthorLastName.Text = AuthorFirstName.Text = string.Empty;
-                //genrePicker.SelectedItem = null;
-            //}
-            //else if (_bewks != null)
-            //{
-                //UpdateBook();
-            //}
-            //{
-                //await DisplayAlert("Error", "Please fill in all required fields.", "OK");
-            //}
         }
-
 
         private bool IsRequired(View view)
         {
