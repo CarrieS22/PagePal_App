@@ -19,32 +19,19 @@ namespace PagePal_App
         }
         protected override async void OnAppearing()
         {
+            base.OnAppearing();
             try
             {
-                base.OnAppearing();
-                myCollectionView.ItemsSource = await App.Database.GetUsers();
+                var currentUser = await App.Database.GetUserByUsernameAsync(App.UserName);
+                var userList = new List<BookTables.Users> { currentUser };
+                myCollectionView.ItemsSource = userList;
             }
-            catch
+            catch (Exception ex)
             {
-                await DisplayAlert("Error", "Oops, something went wrong while loading your profile. Please try again later.", "OK");
+                Debug.WriteLine($"Error loading user profile: {ex.Message}");
+                await DisplayAlert("Load Error", "Sorry, we encountered an issue while loading the profile. Please try again later.", "OK");
             }
         }
-
-        /* protected override async void OnAppearing()
-         {
-             base.OnAppearing();
-             try
-             {
-                 var users = await App.Database.GetUsers();
-                 myCollectionView.ItemsSource = users;
-             }
-             catch (Exception ex)
-             {
-                 Debug.WriteLine($"Error loading user profiles: {ex.Message}");
-                 await DisplayAlert("Load Error", "Sorry, we encountered an issue while loading user profiles. Please try again later.", "OK");
-             }
-         }*/
-
 
         async void ToolbarItem_Clicked(Object sender, EventArgs e)
         {

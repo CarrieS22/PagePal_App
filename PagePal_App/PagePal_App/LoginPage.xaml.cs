@@ -37,25 +37,33 @@ namespace PagePal_App
                 UUsername = txtUsername.Text,
                 UPassword = txtPassword.Text
             };
-            var isValid = AreCredentialsCorrect(user);
-            if (string.IsNullOrEmpty(txtPassword.Text) || string.IsNullOrEmpty(txtUsername.Text))
+
+            if (string.IsNullOrEmpty(txtUsername.Text) || string.IsNullOrEmpty(txtPassword.Text))
             {
-                messageLabel.Text = "Login failed";
-                txtPassword.Text = string.Empty;
+                await DisplayAlert("Error", "Username and Password cannot be empty", "OK");
+                return;
             }
-            else if (isValid)
+
+            var isValid = await AreCredentialsCorrect(user);
+            if (isValid)
             {
-                App.UserName = txtUsername.Text.ToString();
+                App.UserName = txtUsername.Text;
                 App.IsUserLoggedIn = true;
                 Navigation.InsertPageBefore(new MainPage(), this);
                 await Navigation.PopAsync();
             }
+            else
+            {
+                await DisplayAlert("Login Failed", "Invalid Username or Password", "OK");
+            }
         }
 
-        public bool AreCredentialsCorrect(BookTables.Users user)
+        public async Task<bool> AreCredentialsCorrect(BookTables.Users user)
         {
-            return txtUsername.Text == user.UUsername && txtPassword.Text == user.UPassword;
+            var storedUser = await App.Database.GetUserByUsernameAsync(user.UUsername);
+            return storedUser != null && storedUser.UPassword == user.UPassword;
         }
+
 
         void Handle_Tapped(object sender, System.EventArgs e)
         {

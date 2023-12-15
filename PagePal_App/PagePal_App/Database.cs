@@ -36,6 +36,13 @@ namespace PagePal_App
             return _database.Table<BookTables.Users>().ToListAsync();
         }
 
+        //Get users by username for login purposes. 
+        public Task<BookTables.Users> GetUserByUsernameAsync(string username)
+        {
+            return _database.Table<BookTables.Users>().FirstOrDefaultAsync(u => u.UUsername == username);
+        }
+
+
         //Get books based on filters
         public async Task<List<BookTables.Books>> GetBooksBasedOnFiltersAsync(string genre, string[] authorNames)
         {
@@ -110,5 +117,20 @@ namespace PagePal_App
         {
             return _database.Table<BookTables.Users>().ToListAsync();
         }
+
+       /* //Test user
+        public Task<int> InsertTestUserAsync()
+        {
+            var testUser = new BookTables.Users
+            {
+                UUsername = "TestUser",
+                email = "test@example.com",
+                UFirstName = "Test",
+                ULastName = "User",
+                UPassword = "password123"
+            };
+            return SaveUserAsync(testUser);
+        }*/
+
     }
 }

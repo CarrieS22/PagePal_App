@@ -74,13 +74,18 @@ namespace PagePal_App
 
             var newUser = new BookTables.Users
             {
-                // User details initialization
+                UUsername = username.Text,
+                email = email.Text,
+                UFirstName = firstname.Text,
+                ULastName = lastname.Text,
+                UPassword = password.Text // Consider hashing the password for security
             };
 
             await App.Database.SaveUserAsync(newUser);
             await DisplayAlert("Success", "Registration Successful!", "OK");
             await NavigateToMainPage();
         }
+
 
         private async Task UpdateUser()
         {
@@ -99,6 +104,11 @@ namespace PagePal_App
         private async Task NavigateToMainPage()
         {
             await Navigation.PushAsync(new LoginPage());
+        }
+
+        private async Task NavigateToProfilePage()
+        {
+            await Navigation.PushAsync(new ProfilePage());
         }
 
         //This checks all required fields have input

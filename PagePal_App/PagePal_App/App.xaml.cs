@@ -42,6 +42,7 @@ namespace PagePal_App
 
         protected override void OnStart()
         {
+           
         }
 
         protected override void OnSleep()
