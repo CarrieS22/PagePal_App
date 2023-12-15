@@ -9,9 +9,9 @@ using Xamarin.Forms.Xaml;
 
 namespace PagePal_App
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class SignUp : ContentPage
-    {
+	[XamlCompilation(XamlCompilationOptions.Compile)]
+	public partial class SignUp : ContentPage
+	{
         BookTables.Users _Users;
 
         public SignUp()

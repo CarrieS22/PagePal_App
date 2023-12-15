@@ -13,7 +13,7 @@
                    IsPassword="True"
                    TextColor="Black"
                    PlaceholderColor="Gray">
-                </Entry>
+            </Entry>
             <Button
                 VerticalOptions="Center"
                 Text="Login"
@@ -23,7 +23,7 @@
                 BorderColor="Black"
                 CornerRadius="50"
                 Clicked="Button_Clicked">
-                </Button>
+            </Button>
             <Label HorizontalOptions="Center">
                 <Label.FormattedText>
                     <FormattedString>

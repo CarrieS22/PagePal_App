@@ -10,15 +10,12 @@
                      Clicked="Signout_Clicked" Order="Secondary"/>
     </ContentPage.ToolbarItems>
     <StackLayout>
-        <Button Text="Log In"
-                Clicked="Button_Clicked_Login">
-        </Button>
         <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
             <Label x:Name="LoggedIn" HorizontalTextAlignment="Center" TextColor="White" FontSize="28" />
         </Frame>
 
         <Label x:Name="UserIN" HorizontalTextAlignment="Center" TextColor="Black" FontSize="18" />
-        
+
         <Label Text="Enter your filters below and then click 'Filtered Book' to randomly select a book using those filters to read. Click 'Add Book' to add more books to your list. Click ‘Random’ to choose a book with no filters." 
                HorizontalTextAlignment="Start" FontSize="20" Padding="30,10,30,10"/>
 

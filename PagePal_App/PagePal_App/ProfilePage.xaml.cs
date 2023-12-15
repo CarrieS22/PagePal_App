@@ -9,9 +9,9 @@ using Xamarin.Forms.Xaml;
 
 namespace PagePal_App
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ProfilePage : ContentPage
-    {
+	[XamlCompilation(XamlCompilationOptions.Compile)]
+	public partial class ProfilePage : ContentPage
+	{
         public ProfilePage()
         {
             InitializeComponent();

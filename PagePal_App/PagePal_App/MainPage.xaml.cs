@@ -100,6 +100,5 @@ namespace PagePal_App
             Navigation.InsertPageBefore(new LoginPage(), this);
             await Navigation.PopAsync();
         }
-
     }
 }
