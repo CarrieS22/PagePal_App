@@ -30,7 +30,7 @@ namespace PagePal_App
             return _database.Table<BookTables.Books>().ToListAsync(); 
         }
 
-        //Get Authors
+        //Get Users
         public Task<List<BookTables.Users>> GetUsers()
         {
             return _database.Table<BookTables.Users>().ToListAsync();
@@ -81,6 +81,12 @@ namespace PagePal_App
         public Task<int> DeleteBook (BookTables.Books book)
         {
             return _database.DeleteAsync(book);
+        }
+
+        //Check if User exists
+        public Task<BookTables.Users> GetUserByEmailAsync(string email)
+        {
+            return _database.Table<BookTables.Users>().FirstOrDefaultAsync(u => u.email == email);
         }
 
         //Save User

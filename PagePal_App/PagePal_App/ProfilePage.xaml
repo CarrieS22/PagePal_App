@@ -26,22 +26,15 @@
                             </SwipeView.RightItems>
                             <Grid RowSpacing="0">
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="20"/>
-                                </Grid.ColumnDefinitions>
-                                <Label Text="{Binding UUsername}"
-                               Grid.Row="0" Grid.Column="1"
-                               VerticalOptions="CenterAndExpand"
-                               FontSize="20"
-                               FontAttributes="Bold"/>
-                                <Label Text="{Binding email}"
-                               Grid.Row="1" Grid.Column="1"/>
-                                <Label Text="{Binding UFirstName}"
-                               Grid.Row="2" Grid.Column="1"/>
-
-
+                                <Label Text="{Binding UUsername}" Grid.Row="0" Grid.Column="1" FontSize="20" FontAttributes="Bold"/>
+                                <Label Text="{Binding email}" Grid.Row="1" Grid.Column="1"/>
+                                <Label Text="{Binding UFirstName}" Grid.Row="2" Grid.Column="1"/>
+                                <Label Text="{Binding ULastName}" Grid.Row="3" Grid.Column="1"/>
                             </Grid>
                         </SwipeView>
                     </DataTemplate>

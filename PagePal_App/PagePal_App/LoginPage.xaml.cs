@@ -40,7 +40,7 @@ namespace PagePal_App
                 UPassword = txtPassword.Text
             };
             var isValid = AreCredentialsCorrect(user);
-            if (string.IsNullOrEmpty(txtPassword.Text) && string.IsNullOrEmpty(txtUsername.Text))
+            if (string.IsNullOrEmpty(txtPassword.Text) || string.IsNullOrEmpty(txtUsername.Text))
             {
                 messageLabel.Text = "Login failed";
                 txtPassword.Text = string.Empty;
@@ -56,7 +56,7 @@ namespace PagePal_App
 
         public bool AreCredentialsCorrect(BookTables.Users user)
         {
-            return txtPassword.Text == user.UUsername && txtPassword.Text == user.UPassword;
+            return txtUsername.Text == user.UUsername && txtPassword.Text == user.UPassword;
         }
 
         void Handle_Tapped(object sender, System.EventArgs e)

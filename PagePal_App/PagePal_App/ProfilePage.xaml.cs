@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Diagnostics;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -24,8 +24,27 @@ namespace PagePal_App
                 base.OnAppearing();
                 myCollectionView.ItemsSource = await App.Database.GetUsers();
             }
-            catch { }
+            catch
+            {
+                await DisplayAlert("Error", "Oops, something went wrong while loading your profile. Please try again later.", "OK");
+            }
         }
+
+        /* protected override async void OnAppearing()
+         {
+             base.OnAppearing();
+             try
+             {
+                 var users = await App.Database.GetUsers();
+                 myCollectionView.ItemsSource = users;
+             }
+             catch (Exception ex)
+             {
+                 Debug.WriteLine($"Error loading user profiles: {ex.Message}");
+                 await DisplayAlert("Load Error", "Sorry, we encountered an issue while loading user profiles. Please try again later.", "OK");
+             }
+         }*/
+
 
         async void ToolbarItem_Clicked(Object sender, EventArgs e)
         {

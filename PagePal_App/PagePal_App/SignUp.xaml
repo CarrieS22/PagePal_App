@@ -7,14 +7,18 @@
         <StackLayout>
             <Entry x:Name="username" 
                Placeholder="Enter Username" />
-            <Entry x:Name="password"
-               Placeholder="Enter Password" />
+            <Entry x:Name="password" 
+               Placeholder="Enter Password" 
+               IsPassword="True" />
+            <Entry x:Name="confirmPassword" 
+               Placeholder="Confirm Password" 
+               IsPassword="True" />
             <Entry x:Name="email"
                Placeholder="Enter Your E-Mail" />
             <Entry x:Name="firstname"
-               Placeholder="Author First Name" />
+               Placeholder="First Name" />
             <Entry x:Name="lastname"
-               Placeholder="Author Last Name" />
+               Placeholder="Last Name" />
             <Button Text="Register"
                 Clicked="Signup_Clicked" />
         </StackLayout>

@@ -51,7 +51,7 @@ namespace PagePal_App
                     ULastName = lastname.Text,
                     UPassword = password.Text,
                 };
-                // Save the new book to the database using the SaveBookAsync method
+                // Save the new user to the database using the SaveUserAsync method
                 await App.Database.SaveUserAsync(newUser);
 
                 // Display a success message

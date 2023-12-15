@@ -52,7 +52,7 @@
         <Button Text="All Books"
                 Clicked="Button_Clicked_AllBooks">
         </Button>
-        <Button Text="Log In"
+        <Button Text="Log Out"
                 Clicked="Button_Clicked_Login">
         </Button>
 
