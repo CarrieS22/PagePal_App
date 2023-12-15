@@ -47,14 +47,7 @@ namespace PagePal_App
             }
             else if(isValid)
             {
-                App.UserName = txtUsername.Text.ToString();
-                App.IsUserLoggedIn = true;
-                Navigation.InsertPageBefore(new MainPage(), this);
-                await Navigation.PopAsync();
-            }
         }
-
-        public bool AreCredentialsCorrect(BookTables.Users user)
         {
             return txtUsername.Text == user.UUsername && txtPassword.Text == user.UPassword;
         }

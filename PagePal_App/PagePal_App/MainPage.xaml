@@ -10,6 +10,9 @@
                      Clicked="Signout_Clicked" Order="Secondary"/>
     </ContentPage.ToolbarItems>
     <StackLayout>
+        <Button Text="Log In"
+                Clicked="Button_Clicked_Login">
+        </Button>
         <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
             <Label x:Name="LoggedIn" HorizontalTextAlignment="Center" TextColor="White" FontSize="28" />
         </Frame>

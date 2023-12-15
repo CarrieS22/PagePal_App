@@ -81,7 +81,7 @@ namespace PagePal_App
             Navigation.PushAsync(new RandomBook());
         }
 
-        private void Button_Clicked_AllBooks(object sender, EventArgs e)
+        private async void Button_Clicked_AllBooks(object sender, EventArgs e)
         {
             Navigation.PushAsync(new AllBooks());
         }
