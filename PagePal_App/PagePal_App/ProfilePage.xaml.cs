@@ -9,12 +9,12 @@ using Xamarin.Forms.Xaml;
 
 namespace PagePal_App
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class ProfilePage : ContentPage
-	{
-		public ProfilePage ()
-		{
-			InitializeComponent ();
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class ProfilePage : ContentPage
+    {
+        public ProfilePage()
+        {
+            InitializeComponent();
             UserProfile.Text = App.UserName + " Profile";
         }
         protected override async void OnAppearing()

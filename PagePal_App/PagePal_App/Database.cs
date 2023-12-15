@@ -27,7 +27,7 @@ namespace PagePal_App
         //Get Authors
         public Task<List<BookTables.Books>> GetDistinctAuthorsAsync()
         {
-            return _database.Table<BookTables.Books>().ToListAsync(); 
+            return _database.Table<BookTables.Books>().ToListAsync();
         }
 
         //Get Users
@@ -78,7 +78,7 @@ namespace PagePal_App
         }
 
         //Delete Book
-        public Task<int> DeleteBook (BookTables.Books book)
+        public Task<int> DeleteBook(BookTables.Books book)
         {
             return _database.DeleteAsync(book);
         }
