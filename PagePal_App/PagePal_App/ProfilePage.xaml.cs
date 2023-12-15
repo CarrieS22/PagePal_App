@@ -12,9 +12,9 @@ namespace PagePal_App
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class ProfilePage : ContentPage
 	{
-		public ProfilePage ()
-		{
-			InitializeComponent ();
+        public ProfilePage()
+        {
+            InitializeComponent();
             UserProfile.Text = App.UserName + " Profile";
         }
         protected override async void OnAppearing()
@@ -24,8 +24,27 @@ namespace PagePal_App
                 base.OnAppearing();
                 myCollectionView.ItemsSource = await App.Database.GetUsers();
             }
-            catch { }
+            catch
+            {
+                await DisplayAlert("Error", "Oops, something went wrong while loading your profile. Please try again later.", "OK");
+            }
         }
+
+        /* protected override async void OnAppearing()
+         {
+             base.OnAppearing();
+             try
+             {
+                 var users = await App.Database.GetUsers();
+                 myCollectionView.ItemsSource = users;
+             }
+             catch (Exception ex)
+             {
+                 Debug.WriteLine($"Error loading user profiles: {ex.Message}");
+                 await DisplayAlert("Load Error", "Sorry, we encountered an issue while loading user profiles. Please try again later.", "OK");
+             }
+         }*/
+
 
         async void ToolbarItem_Clicked(Object sender, EventArgs e)
         {

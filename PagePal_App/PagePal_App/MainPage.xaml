@@ -15,7 +15,7 @@
         </Frame>
 
         <Label x:Name="UserIN" HorizontalTextAlignment="Center" TextColor="Black" FontSize="18" />
-        
+
         <Label Text="Enter your filters below and then click 'Filtered Book' to randomly select a book using those filters to read. Click 'Add Book' to add more books to your list. Click ‘Random’ to choose a book with no filters." 
                HorizontalTextAlignment="Start" FontSize="20" Padding="30,10,30,10"/>
 
@@ -52,7 +52,7 @@
         <Button Text="All Books"
                 Clicked="Button_Clicked_AllBooks">
         </Button>
-        <Button Text="Log In"
+        <Button Text="Log Out"
                 Clicked="Button_Clicked_Login">
         </Button>
 
