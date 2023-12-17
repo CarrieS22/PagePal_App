@@ -12,17 +12,23 @@ namespace PagePal_App
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class SignUp : ContentPage
 	{
-		public SignUp()
-		{
-			InitializeComponent();
-		}
-
         BookTables.Users _Users;
+
+        public SignUp()
+        {
+            InitializeComponent();
+        }
+
         public SignUp(BookTables.Users emp)
         {
             InitializeComponent();
             Title = "Edit User Information";
             _Users = emp;
+            PopulateUserData(emp);
+        }
+
+        private void PopulateUserData(BookTables.Users emp)
+        {
             username.Text = emp.UUsername;
             email.Text = emp.email;
             firstname.Text = emp.UFirstName;
@@ -33,47 +39,55 @@ namespace PagePal_App
 
         private async void Signup_Clicked(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(username.Text) || string.IsNullOrEmpty(email.Text) || string.IsNullOrEmpty(firstname.Text) || string.IsNullOrEmpty(lastname.Text) || string.IsNullOrEmpty(password.Text))
+            var validationError = ValidateForm();
+            if (!string.IsNullOrEmpty(validationError))
             {
-                await DisplayAlert("Error", "Please fill in all required fields.", "OK");
+                await DisplayAlert("Error", validationError, "OK");
+                return;
             }
-            else if (_Users != null)
+
+            try
             {
-                UpdateUser();
-            }
-            else
-            {
-                var newUser = new BookTables.Users
+                if (_Users != null)
                 {
-                    UUsername = username.Text,
-                    email = email.Text,
-                    UFirstName = firstname.Text,
-                    ULastName = lastname.Text,
-                    UPassword = password.Text,
-                };
-                // Save the new book to the database using the SaveBookAsync method
-                await App.Database.SaveUserAsync(newUser);
-
-                // Display a success message
-                await DisplayAlert("Success", "Registration Successful!", "OK");
+                    await UpdateUser();
+                }
+                else
+                {
+                    await CreateUser();
+                }
+            }
+            catch
+            {
+                await DisplayAlert("Error", "An error occurred. Please try again.", "OK");
             }
         }
 
-
-        private bool IsRequired(View view)
+        private async Task CreateUser()
         {
-            // This is just to check if the required fields have input or not.
-            if (view is Entry entry && entry.Placeholder != null && entry.Placeholder.Contains("Enter") && string.IsNullOrEmpty(entry.Text))
-                return false;
-            else if (view is Picker picker && picker.Title != null && picker.Title.Contains("Select") && picker.SelectedItem == null)
-                return true;
-            else if (view is DatePicker datePicker && datePicker.Date == DateTime.MinValue)
-                return false;
+            var existingUser = await App.Database.GetUserByEmailAsync(email.Text);
+            if (existingUser != null)
+            {
+                await DisplayAlert("Error", "Email already in use. Please use a different email.", "OK");
+                return;
+            }
 
-            return false;
+            var newUser = new BookTables.Users
+            {
+                UUsername = username.Text,
+                email = email.Text,
+                UFirstName = firstname.Text,
+                ULastName = lastname.Text,
+                UPassword = password.Text // Consider hashing the password for security
+            };
+
+            await App.Database.SaveUserAsync(newUser);
+            await DisplayAlert("Success", "Registration Successful!", "OK");
+            await NavigateToMainPage();
         }
 
-        async void UpdateUser()
+
+        private async Task UpdateUser()
         {
             _Users.UUsername = username.Text;
             _Users.email = email.Text;
@@ -81,7 +95,52 @@ namespace PagePal_App
             _Users.ULastName = lastname.Text;
             _Users.UPassword = password.Text;
             await App.Database.UpdateUser(_Users);
-            await Navigation.PopAsync();
+            await DisplayAlert("Success", "User Updated Successfully", "OK");
+
+            // Navigate to the MainPage
+            await NavigateToMainPage();
+        }
+
+        private async Task NavigateToMainPage()
+        {
+            await Navigation.PushAsync(new LoginPage());
+        }
+
+        private async Task NavigateToProfilePage()
+        {
+            await Navigation.PushAsync(new ProfilePage());
+        }
+
+        //This checks all required fields have input
+        private string ValidateForm()
+        {
+            if (string.IsNullOrEmpty(username.Text))
+                return "Username is required.";
+            if (string.IsNullOrEmpty(email.Text) || !IsValidEmail(email.Text))
+                return "A valid email is required.";
+            if (string.IsNullOrEmpty(firstname.Text))
+                return "First name is required.";
+            if (string.IsNullOrEmpty(lastname.Text))
+                return "Last name is required.";
+            if (string.IsNullOrEmpty(password.Text))
+                return "Password is required.";
+            if (password.Text != confirmPassword.Text)
+                return "Passwords do not match.";
+
+            return string.Empty; // No error
+        }
+        //This is to check for a valid email address
+        private bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }

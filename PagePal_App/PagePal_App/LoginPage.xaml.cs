@@ -1,19 +1,17 @@
-﻿using DnsClient.Protocol;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using PagePal_App;
 
 namespace PagePal_App
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPage : ContentPage
     {
-
         public LoginPage()
         {
             InitializeComponent();
@@ -39,25 +37,27 @@ namespace PagePal_App
                 UUsername = txtUsername.Text,
                 UPassword = txtPassword.Text
             };
-            var isValid = AreCredentialsCorrect(user);
-            if (string.IsNullOrEmpty(txtPassword.Text) && string.IsNullOrEmpty(txtUsername.Text))
+
+            if (string.IsNullOrEmpty(txtUsername.Text) || string.IsNullOrEmpty(txtPassword.Text))
             {
-                messageLabel.Text = "Login failed";
-                txtPassword.Text = string.Empty;
+                await DisplayAlert("Error", "Username and Password cannot be empty", "OK");
+                return;
             }
-            else if (isValid)
+
+            var isValid = await AreCredentialsCorrect(user);
+            if (isValid)
             {
-                App.UserName = txtUsername.Text.ToString();
+                App.UserName = txtUsername.Text;
                 App.IsUserLoggedIn = true;
                 Navigation.InsertPageBefore(new MainPage(), this);
                 await Navigation.PopAsync();
             }
+            else
+            {
+        }
+        {
         }
 
-        public bool AreCredentialsCorrect(BookTables.Users user)
-        {
-            return txtPassword.Text == user.UUsername && txtPassword.Text == user.UPassword;
-        }
 
         void Handle_Tapped(object sender, System.EventArgs e)
         {
