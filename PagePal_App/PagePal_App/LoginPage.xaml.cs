@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
 namespace PagePal_App
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -16,8 +14,6 @@ namespace PagePal_App
         {
             InitializeComponent();
         }
-
-
         //public void Button_Clicked(object sender, EventArgs e)
         //{
         //if(txtUsername.Text == "Username123" && txtPassword.Text == "123456")
@@ -29,7 +25,6 @@ namespace PagePal_App
         //DisplayAlert("Oops..", "Username/Password incorrect.", "OK");
         //}
         //}
-
         async void Button_Clicked(object sender, EventArgs e)
         {
             var user = new BookTables.Users
@@ -38,11 +33,13 @@ namespace PagePal_App
                 UPassword = txtPassword.Text
             };
 
-            if (string.IsNullOrEmpty(txtUsername.Text) || string.IsNullOrEmpty(txtPassword.Text))
-            {
-                await DisplayAlert("Error", "Username and Password cannot be empty", "OK");
-                return;
-            }
+            if (string.IsNullOrEmpty(txtPassword.Text) || string.IsNullOrEmpty(txtUsername.Text))
+
+                if (string.IsNullOrEmpty(txtUsername.Text) || string.IsNullOrEmpty(txtPassword.Text))
+                {
+                    await DisplayAlert("Error", "Username and Password cannot be empty", "OK");
+                    return;
+                }
 
             var isValid = await AreCredentialsCorrect(user);
             if (isValid)
@@ -54,8 +51,14 @@ namespace PagePal_App
             }
             else
             {
+                await DisplayAlert("Login Failed", "Invalid Username or Password", "OK");
+            }
         }
+
+        public async Task<bool> AreCredentialsCorrect(BookTables.Users user)
         {
+            var storedUser = await App.Database.GetUserByUsernameAsync(user.UUsername);
+            return storedUser != null && storedUser.UPassword == user.UPassword;
         }
 
 

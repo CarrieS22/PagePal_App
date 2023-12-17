@@ -3,17 +3,14 @@ using System;
 using System.IO;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
 [assembly: Dependency(typeof(App))]
 namespace PagePal_App
 {
     public partial class App : Application
     {
-
         public static bool IsUserLoggedIn { get; set; }
         public static string UserName { get; set; }
         private static Database database;
-
         public static Database Database
         {
             get
@@ -26,7 +23,6 @@ namespace PagePal_App
                 return database;
             }
         }
-
         public App()
         {
             InitializeComponent();
@@ -42,13 +38,12 @@ namespace PagePal_App
 
         protected override void OnStart()
         {
-           
+
         }
 
         protected override void OnSleep()
         {
         }
-
         protected override void OnResume()
         {
         }

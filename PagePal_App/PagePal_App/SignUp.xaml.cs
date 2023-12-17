@@ -3,22 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
 namespace PagePal_App
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class SignUp : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class SignUp : ContentPage
+    {
         BookTables.Users _Users;
-
         public SignUp()
         {
             InitializeComponent();
         }
-
         public SignUp(BookTables.Users emp)
         {
             InitializeComponent();
@@ -26,7 +22,6 @@ namespace PagePal_App
             _Users = emp;
             PopulateUserData(emp);
         }
-
         private void PopulateUserData(BookTables.Users emp)
         {
             username.Text = emp.UUsername;
@@ -36,7 +31,6 @@ namespace PagePal_App
             password.Text = emp.UPassword;
             username.Focus();
         }
-
         private async void Signup_Clicked(object sender, EventArgs e)
         {
             var validationError = ValidateForm();
@@ -45,7 +39,6 @@ namespace PagePal_App
                 await DisplayAlert("Error", validationError, "OK");
                 return;
             }
-
             try
             {
                 if (_Users != null)
@@ -62,7 +55,6 @@ namespace PagePal_App
                 await DisplayAlert("Error", "An error occurred. Please try again.", "OK");
             }
         }
-
         private async Task CreateUser()
         {
             var existingUser = await App.Database.GetUserByEmailAsync(email.Text);
@@ -74,6 +66,7 @@ namespace PagePal_App
 
             var newUser = new BookTables.Users
             {
+                // User details initialization
                 UUsername = username.Text,
                 email = email.Text,
                 UFirstName = firstname.Text,
@@ -96,11 +89,9 @@ namespace PagePal_App
             _Users.UPassword = password.Text;
             await App.Database.UpdateUser(_Users);
             await DisplayAlert("Success", "User Updated Successfully", "OK");
-
             // Navigate to the MainPage
             await NavigateToMainPage();
         }
-
         private async Task NavigateToMainPage()
         {
             await Navigation.PushAsync(new LoginPage());
@@ -126,7 +117,6 @@ namespace PagePal_App
                 return "Password is required.";
             if (password.Text != confirmPassword.Text)
                 return "Passwords do not match.";
-
             return string.Empty; // No error
         }
         //This is to check for a valid email address
